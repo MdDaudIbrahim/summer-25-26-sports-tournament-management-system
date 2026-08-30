@@ -1,0 +1,14 @@
+# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary and Cache Files
+*.tmp
+*.log
+*.swp
+*~
+
+# IDE and Editor Files
+.vscode/
+.idea/

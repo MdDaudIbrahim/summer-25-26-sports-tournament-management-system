@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tournament Pro - Admin Dashboard</title>
+  <!-- Local Stylesheets (No External CDN) -->
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/components.css">
+  <link rel="stylesheet" type="text/css" href="css/dashboard.css">
+</head>
+<body class="dashboard-layout">
+
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <!-- Brand Header -->
+    <div class="sidebar-brand">
+      <div class="sidebar-brand-logo">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+          <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+          <path d="M4 22h16"></path>
+          <path d="M10 14.66V17c0 .55-.45 1-1 1H7v4h10v-4h-2c-.55 0-1-.45-1-1v-2.34"></path>
+          <path d="M18 4H6v7a6 6 0 0 0 12 0V4z"></path>
+        </svg>
+      </div>
+      <div class="sidebar-brand-text">
+        <h2>Tournament Pro</h2>
+        <p>Admin Panel</p>
+      </div>
+    </div>
+
+    <!-- Navigation Links -->
+    <nav class="sidebar-nav">
+      <a href="admin_dashboard.html" class="nav-item active">
+        <span class="nav-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+        </span>
+        Dashboard
+      </a>
+      <a href="#" class="nav-item">
+        <span class="nav-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M18 4H6v7a6 6 0 0 0 12 0V4z"></path></svg>
+        </span>
+        Tournaments
+      </a>
+      <a href="#" class="nav-item">
+        <span class="nav-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        </span>
+        Teams
+      </a>
+      <a href="#" class="nav-item">
+        <span class="nav-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </span>
+        Players
+      </a>
+      <a href="#" class="nav-item">
+        <span class="nav-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        </span>
+        Schedule
+      </a>
+      <a href="#" class="nav-item">
+        <span class="nav-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+        </span>
+        Reports
+      </a>
+    </nav>
+
+    <!-- Sidebar Footer -->
+    <div class="sidebar-footer">
+      <button class="sidebar-cta-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+        New Tournament
+      </button>
+      <div class="sidebar-sublinks">
+        <a href="#" class="sidebar-sublink">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          Settings
+        </a>
+        <a href="#" class="sidebar-sublink">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+          Help
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Top Navigation Bar -->
+  <header class="top-navbar">
+    <div class="top-nav-left">
+      <button class="icon-btn" id="mobileMenuToggle" style="display: none;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+      <div class="page-brand-title">Tournament Hub</div>
+      <div class="top-search-box">
+        <span class="top-search-icon">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </span>
+        <input type="text" class="top-search-input" placeholder="Search...">
+      </div>
+    </div>
+
+    <div class="top-nav-right">
+      <button class="icon-btn" title="Notifications">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+        <span class="icon-badge"></span>
+      </button>
+      <button class="icon-btn" title="Messages">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+      </button>
+      <button class="icon-btn" title="Theme">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+
+      <!-- Profile -->
+      <div class="user-profile-menu">
+        <div class="avatar-circle avatar-initial-blue">AD</div>
+        <div class="user-info">
+          <span class="user-name">Admin User</span>
+          <span class="user-role-badge">Administrator</span>
+        </div>
+        <a href="login.html" class="logout-link">Log Out</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Canvas -->
+  <main class="main-canvas">
+    
+    <!-- Page Header Bar -->
+    <div class="page-title-bar">
+      <div>
+        <h1>Dashboard Overview</h1>
+        <p>Real-time status of ongoing tournaments and matches</p>
+      </div>
+      <div>
+        <button class="btn btn-outline btn-sm">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Download Report
+        </button>
+      </div>
+    </div>
+
+    <!-- Bento Grid Layout -->
+    <div class="grid-12">
+      
+      <!-- Left Column (Span 8) -->
+      <div class="col-8 flex flex-col gap-4">
+        
+        <!-- Live Match Monitor Card -->
+        <div class="card live-monitor-card">
+          <div class="card-header" style="margin-bottom: 12px; padding-bottom: 8px;">
+            <div class="flex items-center gap-2">
+              <span class="pulse-dot"></span>
+              <h3>Live Match Monitoring</h3>
+            </div>
+            <span class="badge badge-error">Dhaka Premier League</span>
+          </div>
+
+          <!-- Scoreboard Box -->
+          <div class="scoreboard-box">
+            <!-- Team A -->
+            <div class="team-box">
+              <div class="team-badge-circle" style="background-color: #FEF3C7; color: #D97706; border-color: #FDE68A;">
+                A
+              </div>
+              <span class="team-name">Abahani Limited</span>
+              <span class="team-side-label">Home</span>
+            </div>
+
+            <!-- Score Display Center -->
+            <div class="score-display">
+              <div class="score-digits">
+                <div class="digit-box" id="teamAScore">2</div>
+                <span class="score-divider">-</span>
+                <div class="digit-box" id="teamBScore">1</div>
+              </div>
+              <span class="match-clock-badge">72 Mins Ongoing</span>
+            </div>
+
+            <!-- Team B -->
+            <div class="team-box">
+              <div class="team-badge-circle" style="background-color: #FEE2E2; color: #DC2626; border-color: #FECACA;">
+                M
+              </div>
+              <span class="team-name">Mohammedan SC</span>
+              <span class="team-side-label">Away</span>
+            </div>
+          </div>
+
+          <!-- Quick Action Buttons -->
+          <div class="flex justify-between items-center">
+            <span style="font-size: 12px; color: var(--text-secondary);">Venue: Bangabandhu National Stadium</span>
+            <div class="flex gap-2">
+              <button class="btn btn-outline btn-sm">Full Screen</button>
+              <button class="btn btn-primary btn-sm" id="updateScoreBtn">+ Update Score</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Active Tournaments Table Card -->
+        <div class="card">
+          <div class="card-header">
+            <h3>Active Tournaments</h3>
+            <a href="#" style="font-size: 13px; font-weight: 600;">View All &rarr;</a>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Tournament Name</th>
+                  <th>Type</th>
+                  <th>Status</th>
+                  <th style="text-align: right;">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Dhaka Premier League (DPL)</strong></td>
+                  <td>League</td>
+                  <td>
+                    <span class="badge badge-success">
+                      <span style="width: 6px; height: 6px; background: #166534; border-radius: 50%;"></span>
+                      Ongoing
+                    </span>
+                  </td>
+                  <td style="text-align: right;">
+                    <button class="btn btn-outline btn-sm" title="Edit Tournament">Edit</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Independence Cup</strong></td>
+                  <td>Knockout</td>
+                  <td>
+                    <span class="badge" style="background: var(--bg-surface-high); color: var(--text-secondary);">
+                      <span style="width: 6px; height: 6px; background: var(--text-muted); border-radius: 50%;"></span>
+                      Upcoming
+                    </span>
+                  </td>
+                  <td style="text-align: right;">
+                    <button class="btn btn-outline btn-sm" title="Edit Tournament">Edit</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column (Span 4) -->
+      <div class="col-4 flex flex-col gap-4">
+        
+        <!-- Venue Schedule & Clash Alert Card -->
+        <div class="card">
+          <div class="card-header">
+            <h3>Venue Schedule</h3>
+            <span style="color: var(--text-muted);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"></path><path d="M5 21V7l7-4 7 4v14"></path></svg>
+            </span>
+          </div>
+
+          <!-- Clash Warning Alert Box -->
+          <div class="alert alert-danger" style="margin-bottom: 12px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink: 0;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            <div>
+              <strong style="display: block; font-size: 11px; text-transform: uppercase; margin-bottom: 2px;">Venue Clash Detected</strong>
+              <span>Two matches are scheduled at Bangabandhu Stadium today at 4:00 PM.</span>
+            </div>
+          </div>
+
+          <!-- Conflict Schedule Item -->
+          <div style="padding: 10px; background: var(--bg-surface-low); border-left: 4px solid var(--live-red); border-radius: var(--radius-sm); margin-bottom: 8px;">
+            <div class="flex justify-between items-center" style="margin-bottom: 4px;">
+              <span style="font-size: 12px; font-weight: 700;">Bangabandhu Stadium</span>
+              <span class="badge badge-warning" style="font-size: 10px;">Today, 16:00</span>
+            </div>
+            <p style="font-size: 12px; margin-bottom: 6px;">Sheikh Jamal vs Brothers Union</p>
+            <a href="#" style="font-size: 11px; font-weight: 600; color: var(--live-red);">Change Schedule &rarr;</a>
+          </div>
+
+          <!-- Normal Schedule Item -->
+          <div style="padding: 10px; background: var(--bg-surface-low); border-left: 4px solid #10B981; border-radius: var(--radius-sm);">
+            <div class="flex justify-between items-center" style="margin-bottom: 4px;">
+              <span style="font-size: 12px; font-weight: 700;">Sylhet District Stadium</span>
+              <span class="badge" style="font-size: 10px; background: var(--bg-surface-high);">Tomorrow, 15:00</span>
+            </div>
+            <p style="font-size: 12px;">Sheikh Russel vs Bashundhara Kings</p>
+          </div>
+        </div>
+
+        <!-- Participation Analysis Bar Chart Card -->
+        <div class="card flex-1 flex flex-col">
+          <div class="card-header">
+            <h3>Participation Analysis</h3>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--text-muted);"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+          </div>
+
+          <!-- Pure CSS Bar Chart -->
+          <div class="chart-widget">
+            <div class="chart-grid-line" style="top: 25%;"></div>
+            <div class="chart-grid-line" style="top: 50%;"></div>
+            <div class="chart-grid-line" style="top: 75%;"></div>
+
+            <!-- Bars -->
+            <div class="chart-bar-group">
+              <div class="chart-bar" style="height: 40%;" title="Dhaka: 40%"></div>
+            </div>
+            <div class="chart-bar-group">
+              <div class="chart-bar highlight" style="height: 85%;" title="Chittagong: 85%"></div>
+            </div>
+            <div class="chart-bar-group">
+              <div class="chart-bar" style="height: 30%;" title="Sylhet: 30%"></div>
+            </div>
+            <div class="chart-bar-group">
+              <div class="chart-bar" style="height: 55%;" title="Khulna: 55%"></div>
+            </div>
+            <div class="chart-bar-group">
+              <div class="chart-bar" style="height: 20%;" title="Barisal: 20%"></div>
+            </div>
+          </div>
+
+          <!-- Chart Axis Labels -->
+          <div class="chart-labels">
+            <span>DHA</span>
+            <span>CTG</span>
+            <span>SYL</span>
+            <span>KHU</span>
+            <span>BAR</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Local JavaScript -->
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

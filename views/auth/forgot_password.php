@@ -59,7 +59,6 @@
               <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
             </svg>
           </span>
-<<<<<<< HEAD
           <input type="password" id="new_password" name="new_password" class="form-control input-with-icon" placeholder="At least 6 characters" maxlength="64" required>
         </div>
         <span class="error-msg" id="newPasswordError"></span>

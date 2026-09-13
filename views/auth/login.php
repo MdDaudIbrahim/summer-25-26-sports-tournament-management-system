@@ -73,7 +73,6 @@ csrf_field(); ?>
               <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
             </svg>
           </span>
-<<<<<<< HEAD
           <input type="password" id="password" name="password" class="form-control input-with-icon" placeholder="••••••••" maxlength="64" required>
         </div>
         <span class="error-msg" id="passwordError"></span>

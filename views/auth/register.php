@@ -75,7 +75,6 @@ csrf_field(); ?>
       <!-- Password -->
       <div class="form-group">
         <label for="password">Password</label>
-<<<<<<< HEAD
         <input type="password" id="password" name="password" class="form-control" placeholder="••••••••" maxlength="64" required>
         <span class="error-msg" id="passwordError"></span>
       </div>

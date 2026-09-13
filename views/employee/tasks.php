@@ -64,7 +64,7 @@ $prepPct = $totalTaskCount > 0 ? round(($completedTasks / $totalTaskCount) * 100
   <div class="col-7">
     <div class="card" id="taskListSection">
       <div class="card-header">
-        <h3>Match Day Preparation Check-list</h3>
+        <h3>Match Day Preparation Checklist</h3>
         <span style="font-size: 12px; color: var(--text-secondary);"><?= $completedTasks ?>/<?= $totalTaskCount ?> Done</span>
       </div>
 

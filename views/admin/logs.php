@@ -65,7 +65,7 @@ endif; ?>
 
 </div>
 
-<!-- Activity Table-->
+<!-- Activity Table -->
 <div class="card">
   <div class="card-header">
     <div class="flex items-center gap-2">

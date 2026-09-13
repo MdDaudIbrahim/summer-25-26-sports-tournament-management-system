@@ -75,14 +75,15 @@ csrf_field(); ?>
       <!-- Password -->
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" id="password" name="password" class="form-control" placeholder="••••••••" required>
+<<<<<<< HEAD
+        <input type="password" id="password" name="password" class="form-control" placeholder="••••••••" maxlength="64" required>
         <span class="error-msg" id="passwordError"></span>
       </div>
 
       <!-- Confirm Password -->
       <div class="form-group">
         <label for="confirm_password">Confirm Password</label>
-        <input type="password" id="confirm_password" name="confirm_password" class="form-control" placeholder="••••••••" required>
+        <input type="password" id="confirm_password" name="confirm_password" class="form-control" placeholder="••••••••" maxlength="64" required>
         <span class="error-msg" id="confirmError"></span>
       </div>
 

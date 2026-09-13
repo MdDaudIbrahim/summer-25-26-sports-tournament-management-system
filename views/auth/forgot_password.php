@@ -59,7 +59,8 @@
               <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
             </svg>
           </span>
-          <input type="password" id="new_password" name="new_password" class="form-control input-with-icon" placeholder="At least 6 characters" required>
+<<<<<<< HEAD
+          <input type="password" id="new_password" name="new_password" class="form-control input-with-icon" placeholder="At least 6 characters" maxlength="64" required>
         </div>
         <span class="error-msg" id="newPasswordError"></span>
       </div>
@@ -73,7 +74,7 @@
               <polyline points="22 4 12 14.01 9 11.01"></polyline>
             </svg>
           </span>
-          <input type="password" id="confirm_password" name="confirm_password" class="form-control input-with-icon" placeholder="Re-type new password" required>
+          <input type="password" id="confirm_password" name="confirm_password" class="form-control input-with-icon" placeholder="Re-type new password" maxlength="64" required>
         </div>
         <span class="error-msg" id="confirmPasswordError"></span>
       </div>

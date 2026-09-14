@@ -24,35 +24,39 @@ require __DIR__ . '/../partials/header.php';
   <div class="kpi-card">
     <span class="kpi-title">Total Fan Votes</span>
     <div class="kpi-value-row">
-      <span class="kpi-value"><?= $totalVotes ?></span>
+      <span class="kpi-value"><?= (int)$totalVotes ?></span>
     </div>
     <span class="kpi-desc">Recorded in MySQL database</span>
   </div>
 
   <div class="kpi-card">
-    <span class="kpi-title">Fan Consensus</span>
+    <span class="kpi-title">Abahani Limited</span>
     <div class="kpi-value-row">
-      <span class="kpi-value" style="color: var(--accent-blue);"><?= $abahaniPct ?>%</span>
+      <span class="kpi-value" style="color: var(--accent-blue);"><?= (int)$votes['Abahani'] ?></span>
+      <span style="font-size: 13px; color: var(--text-muted); margin-left: 6px;">(<?= $abahaniPct ?>%)</span>
     </div>
-    <span class="kpi-desc">Favors Abahani Limited</span>
+    <span class="kpi-desc">Favored to win</span>
   </div>
 
   <div class="kpi-card">
-    <span class="kpi-title">Fan Rank</span>
+    <span class="kpi-title">Mohammedan SC</span>
     <div class="kpi-value-row">
-      <span class="kpi-value" style="color: #d97706;">#1</span>
+      <span class="kpi-value" style="color: #10B981;"><?= (int)$votes['Mohammedan'] ?></span>
+      <span style="font-size: 13px; color: var(--text-muted); margin-left: 6px;">(<?= $mohammedanPct ?>%)</span>
     </div>
-    <span class="kpi-desc">Top predictor this season</span>
+    <span class="kpi-desc">Favored to win</span>
   </div>
 
   <div class="kpi-card">
-    <span class="kpi-title">Prediction Accuracy</span>
+    <span class="kpi-title">Match Draw</span>
     <div class="kpi-value-row">
-      <span class="kpi-value" style="color: #166534;">85%</span>
+      <span class="kpi-value" style="color: #64748b;"><?= (int)$votes['Draw'] ?></span>
+      <span style="font-size: 13px; color: var(--text-muted); margin-left: 6px;">(<?= $drawPct ?>%)</span>
     </div>
-    <span class="kpi-desc">Based on past match results</span>
+    <span class="kpi-desc">Equal points predicted</span>
   </div>
 </div>
+
 
 <!-- prediction & leaderboard -->
 <div class="grid-12">
@@ -73,9 +77,9 @@ require __DIR__ . '/../partials/header.php';
         <div style="display: flex; justify-content: space-between; align-items: center;">
           <div>
             <strong style="font-size: 15px; color: var(--text-primary); display: block;"><?= esc($matchName) ?></strong>
-            <span style="font-size: 12px; color: var(--text-secondary);">Bangabandhu National Stadium &bull; 2nd Half (72')</span>
+            <span style="font-size: 12px; color: var(--text-secondary);">Bangabandhu National Stadium &bull; Dhaka Premier League</span>
           </div>
-          <span class="badge badge-blue">Live Score: 2 - 1</span>
+          <span class="badge badge-blue">Official Poll</span>
         </div>
       </div>
 
@@ -153,74 +157,74 @@ csrf_field(); ?>
     </div>
   </div>
 
-  <!-- leaderboard -->
+  <!-- right column: live community votes stream & context -->
   <div class="col-5">
 
-    <!-- Leaderboard Card -->
+    <!-- Recent Fan Votes Live from MySQL -->
     <div class="card">
       <div class="card-header">
-        <div>
-          <h3 style="margin: 0; font-size: 16px;">Fan Leaderboard</h3>
-          <span style="font-size: 12px; color: var(--text-secondary);">Top predictors this season</span>
+        <div class="flex items-center gap-2">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--accent-blue);"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <div>
+            <h3 style="margin: 0; font-size: 16px;">Recent Community Votes</h3>
+            <span style="font-size: 12px; color: var(--text-secondary);">Live stream from database</span>
+          </div>
         </div>
       </div>
 
       <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 6px;">
-        <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; background: rgba(245, 158, 11, 0.08); border-left: 3px solid #F59E0B; border-radius: var(--radius-sm);">
-          <div class="flex items-center gap-3">
-            <strong style="color: #F59E0B; font-size: 14px;">#1</strong>
-            <div>
-              <strong style="font-size: 13px; color: var(--text-primary);"><?= esc($navUser['full_name'] ?? 'Tanvir Ahmed') ?> (You)</strong>
-              <span style="font-size: 11px; color: var(--text-muted); display: block;">Rank: Gold Predictor</span>
+        <?php if (!empty($recentVotes)): ?>
+          <?php foreach ($recentVotes as $rv): 
+            $teamColor = '#1e3a8a';
+            $badgeBg   = 'rgba(30, 58, 138, 0.1)';
+            if ($rv['predicted_winner'] === 'Mohammedan') {
+                $teamColor = '#10B981';
+                $badgeBg   = 'rgba(16, 185, 129, 0.1)';
+            } elseif ($rv['predicted_winner'] === 'Draw') {
+                $teamColor = '#64748b';
+                $badgeBg   = 'rgba(100, 116, 139, 0.1)';
+            }
+          ?>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; background: var(--bg-surface-low); border-radius: var(--radius-sm); border-left: 3px solid <?= $teamColor ?>;">
+              <div>
+                <strong style="font-size: 13px; color: var(--text-primary); display: block;">
+                  <?= esc($rv['predicted_winner']) ?>
+                </strong>
+                <span style="font-size: 11px; color: var(--text-muted);">
+                  <?= date('d M, h:i A', strtotime($rv['voted_at'])) ?>
+                </span>
+              </div>
+              <span class="badge" style="background: <?= $badgeBg ?>; color: <?= $teamColor ?>; font-size: 11px;">
+                Recorded
+              </span>
             </div>
-          </div>
-          <span class="badge badge-success" style="font-size: 11px;">450 PTS</span>
-        </div>
-
-        <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; background: var(--bg-surface-low); border-radius: var(--radius-sm);">
-          <div class="flex items-center gap-3">
-            <strong style="color: var(--text-muted); font-size: 14px;">#2</strong>
-            <div>
-              <strong style="font-size: 13px; color: var(--text-primary);">Sakib Al Hasan</strong>
-              <span style="font-size: 11px; color: var(--text-muted); display: block;">Silver Fan</span>
-            </div>
-          </div>
-          <span class="badge badge-neutral" style="font-size: 11px;">380 PTS</span>
-        </div>
-
-        <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; background: var(--bg-surface-low); border-radius: var(--radius-sm);">
-          <div class="flex items-center gap-3">
-            <strong style="color: var(--text-muted); font-size: 14px;">#3</strong>
-            <div>
-              <strong style="font-size: 13px; color: var(--text-primary);">Coach Rahat</strong>
-              <span style="font-size: 11px; color: var(--text-muted); display: block;">Tactical Guru</span>
-            </div>
-          </div>
-          <span class="badge badge-neutral" style="font-size: 11px;">320 PTS</span>
-        </div>
+          <?php endforeach; ?>
+        <?php else: ?>
+          <p style="font-size: 13px; color: var(--text-muted); margin: 10px 0; text-align: center;">
+            No community votes recorded yet.
+          </p>
+        <?php endif; ?>
       </div>
     </div>
 
-    <!-- Upcoming Fixture Polls Card -->
+    <!-- Match Information Card -->
     <div class="card" style="margin-top: 18px;">
       <div class="card-header">
         <div class="flex items-center gap-2">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--accent-blue);"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-          <h3>Upcoming Match Polls</h3>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--accent-blue);"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          <h3 style="margin: 0; font-size: 16px;">Poll Security &amp; Information</h3>
         </div>
       </div>
 
-      <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 4px;">
-        <div style="padding: 10px 12px; background: var(--bg-surface-low); border-radius: var(--radius-md);">
-          <span style="font-size: 10px; color: var(--accent-blue); font-weight: 700; text-transform: uppercase;">Next Fixture Poll &bull; 15 Oct</span>
-          <strong style="font-size: 13px; color: var(--text-primary); display: block; margin: 2px 0;">Bashundhara Kings vs Sheikh Jamal</strong>
-          <span style="font-size: 11px; color: var(--text-secondary);">Who will score the opening goal? Poll opens in 2 days.</span>
+      <div style="font-size: 13px; color: var(--text-secondary); line-height: 1.6; padding-top: 4px;">
+        <div style="margin-bottom: 8px;">
+          <strong style="color: var(--text-primary);">Tournament:</strong> Dhaka Premier League (DPL)
         </div>
-
-        <div style="padding: 10px 12px; background: var(--bg-surface-low); border-radius: var(--radius-md);">
-          <span style="font-size: 10px; color: var(--accent-blue); font-weight: 700; text-transform: uppercase;">Upcoming Fixture Poll &bull; 18 Oct</span>
-          <strong style="font-size: 13px; color: var(--text-primary); display: block; margin: 2px 0;">Police FC vs Rahmatganj MFS</strong>
-          <span style="font-size: 11px; color: var(--text-secondary);">Match winner voting opens on Friday morning.</span>
+        <div style="margin-bottom: 8px;">
+          <strong style="color: var(--text-primary);">Venue:</strong> Bangabandhu National Stadium, Dhaka
+        </div>
+        <div>
+          <strong style="color: var(--text-primary);">Real-time Integrity:</strong> Each spectator prediction is validated and saved directly into MySQL. Vote counts and percentages re-calculate dynamically on every submission.
         </div>
       </div>
     </div>

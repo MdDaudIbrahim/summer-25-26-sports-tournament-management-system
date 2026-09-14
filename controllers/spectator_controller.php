@@ -85,9 +85,10 @@ function spectator_controller($conn) {
             $votes[$row['predicted_winner']] = (int)$row['votes'];
         }
     }
-    $abahaniPct    = $totalVotes > 0 ? round(($votes['Abahani']    / $totalVotes) * 100) : 60;
-    $mohammedanPct = $totalVotes > 0 ? round(($votes['Mohammedan'] / $totalVotes) * 100) : 30;
-    $drawPct       = $totalVotes > 0 ? (100 - $abahaniPct - $mohammedanPct) : 10;
+    $abahaniPct    = $totalVotes > 0 ? round(($votes['Abahani']    / $totalVotes) * 100) : 0;
+    $mohammedanPct = $totalVotes > 0 ? round(($votes['Mohammedan'] / $totalVotes) * 100) : 0;
+    $drawPct       = $totalVotes > 0 ? (100 - $abahaniPct - $mohammedanPct) : 0;
+    $recentVotes   = get_recent_predictions($conn, $matchName, 6);
 
     $matchSchedules = [
         [

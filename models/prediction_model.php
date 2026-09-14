@@ -30,3 +30,25 @@ function get_total_votes($conn, $matchName) {
     mysqli_stmt_close($stmt);
     return (int)($row['total'] ?? 0);
 }
+
+function get_recent_predictions($conn, $matchName = null, $limit = 6) {
+    if (!empty($matchName)) {
+        $sql  = "SELECT id, match_name, predicted_winner, voted_at
+                 FROM match_predictions
+                 WHERE match_name = ?
+                 ORDER BY id DESC LIMIT ?";
+        $stmt = mysqli_prepare($conn, $sql);
+        mysqli_stmt_bind_param($stmt, 'si', $matchName, $limit);
+    } else {
+        $sql  = "SELECT id, match_name, predicted_winner, voted_at
+                 FROM match_predictions
+                 ORDER BY id DESC LIMIT ?";
+        $stmt = mysqli_prepare($conn, $sql);
+        mysqli_stmt_bind_param($stmt, 'i', $limit);
+    }
+    mysqli_stmt_execute($stmt);
+    $rows = mysqli_fetch_all(mysqli_stmt_get_result($stmt), MYSQLI_ASSOC);
+    mysqli_stmt_close($stmt);
+    return $rows;
+}
+
